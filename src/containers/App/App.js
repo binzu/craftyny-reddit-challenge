@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import {IntlProvider} from 'react-intl';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
+  Link,
   Route,
   Switch
 } from "react-router-dom";
@@ -22,8 +23,6 @@ class App extends Component {
       favorites: Reddit.getFavorites()
     };
     this.updateHandler = this.updateHandler.bind(this);
-    // console.log('items: ',this.state.items)
-    // this.getRedditPosts();
   }
 
   updateHandler(e) {
@@ -46,17 +45,28 @@ class App extends Component {
     return (
     <IntlProvider locale="en">
       <div className="App">
-          <NavBar favorites={this.state.favorites}/>
+        <Router>
             <div className="content">
-            <BrowserRouter>
+              <nav className="NavBar">
+                <ul>
+                    <li>
+                      <Link to='/'>
+                        <i className="fa fa-reddit" aria-hidden="true"></i> Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to='/favorites'>
+                        <i className="fa fa-heart" aria-hidden="true"></i> Favorites ({this.state.favorites.length})
+                      </Link>
+                    </li>
+                </ul>
+              </nav>
               <Switch>
-                {/* <Route exact path="/" component={Home} /> */}
-                <Route path="/" render={()=><Home items={this.state.items} updateHandler={this.updateHandler}/>}/>
-                <Route path="/favorites" render={()=><Favorites items={this.state.favorites} updateHandler={this.updateHandler}/>}/>
+                <Route exact path="/" render={()=><Home items={this.state.items} updateHandler={this.updateHandler}/>}/>
+                <Route render={() => <Favorites items={this.state.favorites} updateHandler={this.updateHandler}/>} />
               </Switch>
-            </BrowserRouter>
-            {/* <ItemList items={this.state.items} updateHandler={this.updateHandler} /> */}
             </div>
+          </Router>
       </div>
     </IntlProvider>
     );

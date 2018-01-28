@@ -17,7 +17,6 @@ class Item extends React.Component {
   }
 
   render() {
-    // console.log('these props',this.props);
     return (
       <div className="item">
         <div className="image-container">
