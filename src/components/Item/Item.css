@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
+.item {
+  margin: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.item .image-container {
+  position: relative;
+  background: #ccc;
+  min-height: 150px;
+}
+.item .image-container .btn-favorite {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1020;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+.item .image-container:hover .btn-favorite {
+  display: block;
+  opacity: .9;
+  cursor: pointer;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+.item .image-container img {
+  width: 100%;
+}
+.item .image-container img {
+  width: 100%;
+  vertical-align: middle;
+}
+.item h2{
+  color: #000;
+  font-family: 'Arvo', serif;
+	font-size: 18px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 24px;
+  padding: 2px 18px 7px
+}
+.item .item-footer {
+  color: #999;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
