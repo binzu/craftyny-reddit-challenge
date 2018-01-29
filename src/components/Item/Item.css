@@ -10,27 +10,45 @@
   position: relative;
   background: #ccc;
   min-height: 150px;
+  overflow: hidden;
 }
-.item .image-container .btn-favorite {
+.item .image-container .btn-favorite,
+.item .image-container .btn-trash {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: -40px;
   color: white;
   text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
   opacity: 0;
   cursor: pointer;
   z-index: 1020;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all .5s ease-in-out; /** Firefox **/
+  -o-transition: all .5s ease-in-out; /** Opera **/
 }
-.item .image-container:hover .btn-favorite {
+.item .image-container:hover .btn-favorite,
+.item .image-container:hover .btn-trash {
+  left: 10px;
   display: block;
   opacity: .9;
   cursor: pointer;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all .5s ease-in-out; /** Firefox **/
+  -o-transition: all .5s ease-in-out; /** Opera **/
+}
+.item .image-container .btn-favorite.active {
+  position: absolute;
+  top: 10px;
+  left: 430px;
+  opacity: 1;
+  color: red;
+  cursor: auto;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all .5s ease-in-out; /** Firefox **/
+  -o-transition: all .5s ease-in-out; /** Opera **/
 }
 .item .image-container img {
   width: 100%;

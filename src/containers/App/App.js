@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import {IntlProvider} from 'react-intl';
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
   Route,
   Switch
 } from "react-router-dom";
 import Home from "../Home/Home";
 import Favorites from "../Favorites/Favorites";
-
-// import logo from './logo.svg';
 import './App.css';
 import Reddit from '../../utils/Reddit';
-import NavBar from '../../components/NavBar/NavBar';
 
 class App extends Component {
   constructor(props) {
@@ -50,14 +46,14 @@ class App extends Component {
               <nav className="NavBar">
                 <ul>
                     <li>
-                      <Link to='/'>
+                      <NavLink exact to='/' activeClassName="active">
                         <i className="fa fa-reddit" aria-hidden="true"></i> Home
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link to='/favorites'>
+                      <NavLink to='/favorites' activeClassName="active">
                         <i className="fa fa-heart" aria-hidden="true"></i> Favorites ({this.state.favorites.length})
-                      </Link>
+                      </NavLink>
                     </li>
                 </ul>
               </nav>

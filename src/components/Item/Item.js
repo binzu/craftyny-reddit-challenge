@@ -3,24 +3,50 @@ import './Item.css';
 import {FormattedRelative} from 'react-intl';
 import Reddit from '../../utils/Reddit';
 
-
 class Item extends React.Component {
   constructor(props) {
     super(props);
-    this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.state = {
+      active: false
+    };
   }
 
-  handleFavoriteClick(e) {
+  handleDelete(id, e) {
     e.preventDefault();
-    Reddit.addFavorite(this.props.item);
+    console.log(id);
+    Reddit.deleteFavorite(id);
     this.props.updateHandler(e);
   }
 
+  handleFavorite(e) {
+    e.preventDefault();
+    if (this.state.active) return;
+    Reddit.addFavorite(this.props.item);
+    this.props.updateHandler(e);
+    this.setState({active:true});
+  }
+
   render() {
+    let itemMenu = null;
+    if (this.props.itemType === 'favorite') {
+      itemMenu = (
+        <div className="btn-trash" onClick={(e) => this.handleDelete(this.props.id, e)}>
+          <i className="fa fa-trash" aria-hidden="true"></i>
+        </div>
+      )
+    } else {
+        itemMenu = (
+          <div className={this.state.active ? "btn-favorite active" : "btn-favorite"} onClick={this.handleFavorite}>
+            <i className="fa fa-heart" aria-hidden="true"></i>
+          </div>
+        )
+    }
     return (
       <div className="item">
         <div className="image-container">
-          <div className="btn-favorite" onClick={this.handleFavoriteClick}><i className="fa fa-heart" aria-hidden="true"></i></div>
+          {itemMenu}
           <img src={this.props.item.url} alt=''/>
         </div>
         <h2>{this.props.item.title}</h2>
