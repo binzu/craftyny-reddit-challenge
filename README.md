@@ -1,5 +1,5 @@
 # Craft NY Reddit Challenge
-A simple React web app that displays posts and favorites
+A simple React web app that displays Reddit posts and favorites
 
 ## Demo
 * Demo published at [http://aromatic-record.surge.sh/](http://aromatic-record.surge.sh/)
