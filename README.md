@@ -1,4 +1,4 @@
-# Craft NY Reddit Challenge
+# Reddit Photo Reader
 A simple React web app that displays Reddit posts and favorites
 
 ## Demo
